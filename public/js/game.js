@@ -26,7 +26,7 @@ let myinfo = {};
 
 let camera = {
   'pos': 0
-}
+};
 
 // read level
 let gameLevel = 'json/1-1.json';
@@ -35,7 +35,7 @@ let gameLevel = 'json/1-1.json';
   await _loader.loading(CUBE, '/json/tileset.json', gameLevel);
   let s = _loader.levelBuffer;
   let y = _loader.levelJSON.layers;
-  // console.log(s);return;
+  console.log(s);return;
 
   // SOCKET.emit('createRoom', {
   //   keyStates: _input.keyStates
