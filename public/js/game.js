@@ -5,7 +5,8 @@ import Network from './network.js';
 import {drawGrid} from "./function.js";
 
 // init
-const SOCKET = io.connect('http://localhost:5000');
+// const SOCKET = io.connect('http://localhost:5000');
+const SOCKET = io.connect();
 const CANVAS = document.querySelector('#canvas');
 const CTX = CANVAS.getContext('2d');
 const CUBE = {'x': 25, 'y': 15, 'px': 64};
@@ -35,8 +36,6 @@ let gameLevel = 'json/1-1.json';
   await _loader.loading(CUBE, '/json/tileset.json', gameLevel);
   let s = _loader.levelBuffer;
   let y = _loader.levelJSON.layers;
-  console.log('aa');
-  console.log(s);return;
 
   // SOCKET.emit('createRoom', {
   //   keyStates: _input.keyStates
