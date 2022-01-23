@@ -1,0 +1,26 @@
+{
+  "name": "mario",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/index.js",
+  "scripts": {
+    "start": "nodemon server/index.js"
+  },
+  "keywords": [],
+  "author": "sakawa freddy",
+  "license": "MIT",
+  "dependencies": {
+    "@geckos.io/phaser-on-nodejs": "^1.2.3",
+    "@geckos.io/snapshot-interpolation": "^1.0.1",
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mysql": "^2.18.1",
+    "phaser": "3.24.1",
+    "socket.io": "^3.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

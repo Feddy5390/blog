@@ -1,0 +1,33 @@
+{
+  "name": "1-1",
+  "author": "freddy",
+  "music": "overworld",
+  "time": 3600,
+  "layers": {
+    "sky": [
+      [0,0,200,15]
+    ],
+
+    "cloud-1": [
+      [20,12,1,1],
+      [4,10,1,1]
+    ],
+
+    "water-pipe-1": [
+      [4,2,1,1]
+    ],
+
+    "water-pipe-2": [
+      [4,1,1,1]
+    ],
+
+    "broken-stone": [
+      [10,3,8,1],
+      [0,0,28,1]
+    ],
+
+    "question-square-1": [
+      [9,9,5,3]
+    ]
+  }
+}
