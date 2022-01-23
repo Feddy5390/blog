@@ -12,7 +12,7 @@ const CTX = CANVAS.getContext('2d');
 const CUBE = {'x': 25, 'y': 15, 'px': 64};
 CANVAS.width = CUBE.x * CUBE.px;
 CANVAS.height = CUBE.y * CUBE.px;
-const DELAY = 0;
+const DELAY = 50;
 
 const _render = new Render(CUBE);
 const _loader = new Loader();
