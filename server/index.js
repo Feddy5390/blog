@@ -10,6 +10,7 @@ const Mario  = require('./entity/mario.js')
 const Koopa  = require('./entity/koopa.js')
 
 // express
+const PORT       = process.env.PORT || 5000
 const EXPRESS    = require('express')
 const APP        = EXPRESS()
 const SERVER     = require('http').createServer(APP)
@@ -160,4 +161,4 @@ APP.post('/login', (req, res) => {
   })
 })
 
-SERVER.listen(3000)
+SERVER.listen(PORT)
