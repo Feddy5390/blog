@@ -5,7 +5,7 @@ import Network from './network.js';
 import {drawGrid} from "./function.js";
 
 // init
-const SOCKET = io.connect('http://localhost:3000');
+const SOCKET = io.connect('http://localhost:5000');
 const CANVAS = document.querySelector('#canvas');
 const CTX = CANVAS.getContext('2d');
 const CUBE = {'x': 25, 'y': 15, 'px': 64};
