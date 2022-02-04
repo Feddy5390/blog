@@ -1,10 +1,4 @@
-/* fonts */
-@font-face {
-  font-family: 'SuperMarioMakerFont';
-  src: url('/fonts/SuperMarioMakerFont.ttf') format('truetype');
-}
-
-/* all */
+/* common */
 * {
   padding: 0;
   margin: 0;
@@ -13,242 +7,190 @@
   font-weight: 100;
 }
 
-.material-icons {
-  vertical-align: bottom;
-}
-
 a {
   text-decoration: none;
 }
 
+/* font */
+@font-face {
+  font-family: 'SuperMarioMakerFont';
+  src: url('/fonts/SuperMarioMakerFont.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+/* content */
 body {
-  background-image: linear-gradient(180deg, rgb(0, 0, 0, 50%), rgb(0, 0, 0, 50%)),url('/images/web_bg.png');
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
   width: 100%;
-  position: relative;
+  height: 100%;
   z-index: 0;
+  background-image: url('/images/web/bg-1.png');
+}
+
+.wrapper {
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 70px 180px auto;
+  grid-template-columns: 100%;
+  grid-gap: 10px;
+  grid-template-areas: "nav"
+                       "slide"
+                       "main";
 }
 
 #canvas {
-  border:10px solid blue;
+  width: 100%;
   z-index: 2;
+  box-sizing: border-box;
+  background: #989898
 }
 
-.google-icon-center {
+/* nav */
+.nav {
+  grid-area: nav;
+}
+
+nav {
+  display: grid;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-template-columns: 70px 1fr 1fr 1fr 1fr;
+  height: 100%;
+  border: 1px solid #cfcfcf;
+}
+
+nav > .nav-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'SuperMarioMakerFont';
+  letter-spacing: 3px;
+  cursor: pointer;
+  color: #707070;
+  box-shadow: 1px;
+}
+
+nav > .nav-item:hover {
+  color: #2b087a;
+  background-color: #f9f9f9;
+}
+
+nav > .nav-item + .nav-item {
+  border-left: 1px solid #cfcfcf;
+}
+
+nav > .nav-item:not(.nav-login) > .material-icons {
+  margin-right: 4px;
+}
+
+nav > .nav-login {
+  background-color: #2b087a;
+}
+
+nav > .nav-login:hover {
+  background-color: #2b087a;
+}
+
+nav > .nav-login > .material-icons {
+  color: #fff;
+  font-size: 35px;
+}
+
+.main {
+  grid-area: main;
+  user-select: text;
+  width: 100%;
+  overflow-Y: scroll;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+}
+
+/* slide */
+.slide {
+  grid-area: slide;
+  width: 100%;
   display: flex;
   align-items: center;
 }
 
-/* loading */
-.lds-ellipsis {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-.lds-ellipsis div {
-  position: absolute;
-  top: 33px;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: #ffd640;
-  animation-timing-function: cubic-bezier(0, 1, 1, 0);
-  z-index: 2;
-}
-.lds-ellipsis div:nth-child(1) {
-  left: 8px;
-  animation: lds-ellipsis1 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(2) {
-  left: 8px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(3) {
-  left: 32px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(4) {
-  left: 56px;
-  animation: lds-ellipsis3 0.6s infinite;
-}
-@keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(24px, 0);
-  }
-}
-
-/* popup */
-@keyframes showPopup {
-    0% { transform:scale(0.2); }
-    30% { transform:scale(0.4); }
-    50% { transform:scale(0.7); }
-    68% { transform:scale(0.9); }
-    78% { transform:scale(0.8); }
-    100% { transform:scale(1); }
-}
-
-#popup {
-  width: 600px;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 4px 4px 0px 0px rgb(0, 0, 0, 25%);
-  animation: showPopup 0.4s linear;
-  position: fixed;
-  z-index: 2;
-}
-
-#popup-close {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 50%;
-  box-shadow: 4px 4px 0px 0px rgb(0 0 0 / 25%);
-  background: #fff;
-  text-align: center;
-  position: absolute;
-  right: 0;
-  top: -50px;
-  cursor: pointer;
-  color: rgba(255, 0, 19, 1);
-  font-size: 30px;
-  font-weight: bolder;
-}
-
-#popup-close:active {
-  right: -3px;
-  top: -47px;
-  box-shadow: 2px 2px 0px 0px rgb(0 0 0 / 25%);
-}
-
-#popup > h1 {
-  text-align: center;
-  background-color: #E50213;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  color: #fff;
-  line-height: 2.5;
-  letter-spacing: 2px;
-  font-family: 'SuperMarioMakerFont';
-}
-
-#popup > .login > .content {
-  padding: 30px;
-}
-
-#popup > .login > .content > h2 {
-  border-bottom: 2px solid #545454;
-  color: #545454;
-  padding-left: 10px;
-  padding-bottom: 8px;
-}
-
-/* login & create account */
-#account, #password {
-  padding: 10px 14px;
-  display: block;
-  width: 100%;
-  font-size: 15px;
-  margin-bottom: 25px;
-  outline: none;
-  border-radius: 5px;
-  border: 1px solid #000;
-}
-
-#account:focus, #password:focus {
-  border: 1px solid #E50213;
-  outline: none;
-}
-
-.login-btn-wrapper {
+.autoplay {
+  width: calc(100% - 60px);
   margin: 0 auto;
-  position: relative;
-  box-shadow: 2px 2px 0px 0px rgb(0 0 0 / 25%);
-  background-color: rgb(0 0 0 / 25%);
-  border-radius: 5px;
 }
 
-#login-btn {
-  padding: 10px;
-  color: #4e4e4e;
-  font-size: 20px;
-  font-weight: bold;
-  display: block;
+.autoplay .slick-slide {
+  height: 180px;
+  margin: 0 2px;
+  position: relative;
+}
+
+.autoplay .slick-slide img {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.autoplay .slick-slide p {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* height: 40px; */
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  color: #fff;
   text-align: center;
-  position: relative;
-  background-color: #ffd334;
-  border-radius: 5px;
-  margin-bottom: 25px;
-  top: -2px;
-  left: -2px;
+  line-height: 1;
+  box-sizing: border-box;
 }
 
-#login-btn::before {
-  content: '';
-  display: inline-block;
-  vertical-align: bottom;
-  width: 40px;
-  height: 34px;
-  background-image: url('/images/robot.png');
-  padding-right: 5px;
-  background-repeat: no-repeat;
+.slick-arrow {
+  width: 19px !important;
+  height: 75px !important;
 }
 
-#login-btn:hover {
-  background-color: #f1bd00;
+.slick-prev {
+  left: -25px !important;
+  transition: left 0.25s linear !important;
+  transform: scaleX(-1) translate(0, -50%) !important;
 }
 
-#login-btn:active {
-  top: 0px;
-  left: 0px;
+.slick-next {
+  right: -25px !important;
+  transition: right 0.25s linear !important;
 }
 
-#login-btn > span {
-  font-size: 25px;
+.slick-next:hover {
+  right: -30px !important;
 }
 
-#create-account {
-  color: #424242;
-  font-size: 18px;
-  cursor: pointer;
-  justify-content: flex-end;
+.slick-prev:hover {
+  left: -30px !important;
 }
 
-#create-account > p {
-  margin-right: 5px
-}
+/* rwd */
+@media(max-width: 1200px) {
+  .wrapper {
+    width: 100vw;
+    height: 100vh;
+  }
 
-#create-account:hover {
-  color: rgba(255, 0, 19, 1);
-}
-
-#resolving-input-alert {
-  margin: 15px 0;
-  color: rgba(255, 0, 19, 1);
-}
-
-#resolving-input-alert > p {
-  margin-left: 5px
+  .autoplay .slick-slide {
+    width: 350px;
+  }
 }

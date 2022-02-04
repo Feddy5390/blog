@@ -5,7 +5,7 @@
 </head>
 <body>
   <script type="module">
-    import { Popup, Loading } from '../js/index.js';
+    import { Popup, Loading } from '/js/index.js';
     let loginObj = {
       title: 'Account',
       content: `<h2>Log in / Sign up</h2>
@@ -21,8 +21,10 @@
                   </a>
                 </div>
                 <div id="create-account" class="google-icon-center" href="#">
-                  <p>Create account</p>
-                  <span class="material-icons">arrow_circle_right</span>
+                  <span class="create-account-inner">
+                    <p>Create account</p>
+                    <span class="material-icons">arrow_circle_right</span>
+                  <span>
                 </div>`,
       showCloseBtn: false
     };

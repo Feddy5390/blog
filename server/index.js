@@ -1,16 +1,15 @@
-// const DB = require('./lib/db.js')
-const MEMBER = require('./lib/member.js')
+const MEMBER = require('./js/member.js')
 
 // timer
-const Timer  = require('./lib/timer.js')
+const Timer  = require('./js/timer.js')
 const _timer = new Timer
 
 // entities
-const Mario  = require('./entity/mario.js')
-const Koopa  = require('./entity/koopa.js')
+const Mario  = require('./js/entity/mario.js')
+const Koopa  = require('./js/entity/koopa.js')
 
 // express
-const PORT       = process.env.PORT || 5000
+const PORT       = 3000
 const EXPRESS    = require('express')
 const APP        = EXPRESS()
 const SERVER     = require('http').createServer(APP)
@@ -25,7 +24,6 @@ const BODYPARSER = require('body-parser')
 // });
 // return
 
-// player info
 let players     = {}
 let playersObj  = {}
 let playersCmd  = {}
@@ -107,40 +105,11 @@ APP.use(SESSION({
   }
 }))
 
-// middleware
-function cheakLogin(req, res, next) {
-  if(!req.session.subjectID) {
-    return res.render('login', {
-      title: '首頁',
-      users: ['Kai', 'aYen', 'Kyousuke']
-    })
-  }
-  next()
-}
-
-//TEST
-APP.get('/develop', (req, res) => {
-  res.render('index', {
-    title: '首頁',
-    users: ['Kai', 'aYen', 'Kyousuke']
-  })
+APP.get('/', (req, res) => {
+  res.render('index')
 })
 
-APP.get('/', cheakLogin, (req, res) => {
-  res.render('index', {
-    title: '首頁',
-    users: ['Kai', 'aYen', 'Kyousuke']
-  })
-})
-
-APP.get('/login', cheakLogin, (req, res) => {
-  res.render('login', {
-    title: '首頁',
-    users: ['Kai', 'aYen', 'Kyousuke']
-  })
-})
-
-// post
+// login process api
 APP.post('/login', (req, res) => {
   if(req.session.subjectID) {
     return res.json({status: 1})

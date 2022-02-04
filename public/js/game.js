@@ -5,7 +5,6 @@ import Network from './network.js';
 import {drawGrid} from "./function.js";
 
 // init
-// const SOCKET = io.connect('http://localhost:5000');
 const SOCKET = io.connect();
 const CANVAS = document.querySelector('#canvas');
 const CTX = CANVAS.getContext('2d');
@@ -29,21 +28,19 @@ let camera = {
   'pos': 0
 };
 
-// read level
-let gameLevel = 'json/1-1.json';
-
 (async () => {
-  await _loader.loading(CUBE, '/json/tileset.json', gameLevel);
+  
+  await _loader.loading(CUBE, '/json/tileset.json', 'json/1-1.json');
   let s = _loader.levelBuffer;
-  let y = _loader.levelJSON.layers;
+  console.log(s.width, s.height);
 
   // SOCKET.emit('createRoom', {
   //   keyStates: _input.keyStates
   // });
 
-  SOCKET.emit('join', {
-    keyStates: _input.keyStates
-  });
+  // SOCKET.emit('join', {
+  //   keyStates: _input.keyStates
+  // });
 
   SOCKET.on('returnJoin', mySocketId => {
     console.log('ID[' + mySocketId + ']加入遊戲');
@@ -85,7 +82,7 @@ let gameLevel = 'json/1-1.json';
   })
 
   function main() {
-    CTX.clearRect( 0, 0, CANVAS.width, CANVAS.height);
+    // CTX.clearRect( 0, 0, CANVAS.width, CANVAS.height);
 
     let players = _network.getCurrentState(gameUpdate);
 
